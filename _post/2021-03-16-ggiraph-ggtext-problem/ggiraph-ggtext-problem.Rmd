@@ -50,6 +50,7 @@ pl_giraph_ggtext <- mtcars %>%
   geom_point_interactive(aes(x=wt,
                  y=qsec,
                  tooltip=paste(wt, qsec)))+
+  theme_ipsum_rc()+
   theme(
     plot.title=element_markdown()
   )
