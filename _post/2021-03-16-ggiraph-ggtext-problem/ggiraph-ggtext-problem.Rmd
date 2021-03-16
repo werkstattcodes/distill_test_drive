@@ -167,7 +167,7 @@ pl_giraph_ggtext <- mtcars %>%
   )
 
 girafe(ggobj = pl_giraph_ggtext,
-       fonts=list(sans="RobotoCondensed"),
+       fonts=list(sans="Roboto Condensed"),
        height_svg = 5,
        options = list(
     opts_toolbar(saveaspng = FALSE))
