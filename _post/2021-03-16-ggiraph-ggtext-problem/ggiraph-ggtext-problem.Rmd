@@ -53,13 +53,13 @@ pl_giraph_ggtext <- mtcars %>%
   geom_point_interactive(aes(x=wt,
                  y=qsec,
                  tooltip=paste(wt, qsec)))+
-  theme_ipsum_rc()+
+  theme_ipsum_rc(base_family = "Roboto")+
   theme(
     plot.title=element_markdown()
   )
 
 girafe(ggobj = pl_giraph_ggtext,
-       fonts = list(sans = "Roboto Condensed"),
+       fonts = list(sans = "Roboto"),
        height_svg = 5,
        options = list(
     opts_toolbar(saveaspng = FALSE))
