@@ -80,7 +80,7 @@ theme_post <- function() {
       #   margin = margin(l = 0, unit = "cm"),
       #   size = 13
       # ),
-      plot.title.position = "plot",
+      # plot.title.position = "plot",
       # plot.subtitle = element_text(
       #   color = "grey50",
       #   margin = margin(t = 0.2, b = 0.3, unit = "cm"),
@@ -91,7 +91,7 @@ theme_post <- function() {
         size = 8,
         hjust = c(0)
       ),
-      plot.caption.position = "panel",
+      # plot.caption.position = "panel",
       axis.title.x = element_text(
         angle = 0,
         color = "grey50",
@@ -135,8 +135,9 @@ theme_post <- function() {
       legend.text.align = 0,
       legend.box.just = "top",
       legend.key.height = unit(0.2, "line"),
-      legend.key.width = unit(0.5, "line")#,
-      #text = element_text(size = 5)
+      legend.key.width = unit(0.5, "line"),
+      text = element_text(size = 5)
+      # text=element_markdown(size=5)
     )
 }
 
