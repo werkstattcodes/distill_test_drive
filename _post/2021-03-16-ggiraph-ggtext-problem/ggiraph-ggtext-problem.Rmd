@@ -180,11 +180,12 @@ girafe(ggobj = pl_giraph_ggtext,
 
 pl_giraph_ggtext <- mtcars %>% 
   ggplot()+
-  labs(title=glue::glue("this is a very long title, with many lines and line breaks and other lines, this \nword is in red or blue or white"))+
+  labs(title=glue::glue("this is a very long title, with many lines and line breaks and other lines, this <br>word is in <span style='color:red;'>red</span> or blue or white"))+
   geom_point_interactive(aes(x=wt,
                  y=qsec,
                  tooltip=paste(wt, qsec)))+
-  theme_ipsum_rc()
+  theme_ipsum_rc()+
+  theme(plot.title=element_markdown())
 
 girafe(ggobj = pl_giraph_ggtext,
        fonts=list(sans="Roboto Condensed"),
