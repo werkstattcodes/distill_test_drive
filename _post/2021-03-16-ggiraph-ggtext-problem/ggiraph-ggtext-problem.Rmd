@@ -13,6 +13,8 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = T)
+plot_bg_color <- "white"
+
 ```
 
 
@@ -35,7 +37,8 @@ mtcars %>%
   labs(title=glue::glue("this is a very long title, with many lines and line breaks and other lines, this <br>word is in <span style='color:red;'>red </span>"))+
   geom_point(aes(x=wt,
                  y=qsec))+
-  theme_ipsum_rc()+
+  # theme_ipsum_rc()+
+  theme_ipsum_rc(base_family = "Roboto Condensed")+
   theme(
     plot.title=element_markdown()
   )
@@ -74,10 +77,9 @@ girafe(ggobj = pl_giraph_ggtext,
 ### ggtext + ggiraph + theme
 
 ```{r}
-plot_bg_color <- "white"
 
 theme_post <- function() {
-  hrbrthemes::theme_ipsum_rc(base_family ="RobotoCondensed") +
+  hrbrthemes::theme_ipsum_rc(base_family ="Roboto Condensed") +
     theme(
       plot.background = element_rect(fill = plot_bg_color, color=NA),
       panel.background = element_rect(fill = plot_bg_color, color=NA),
