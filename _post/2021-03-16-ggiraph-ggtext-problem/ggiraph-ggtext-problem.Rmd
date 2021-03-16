@@ -39,6 +39,7 @@ mtcars %>%
 # ggtext + ggiraph
 
 ```{r}
+library(hrbrthemes)
 pl_giraph_ggtext <- mtcars %>% 
   ggplot()+
   labs(title=glue::glue("this is a very long title, with many lines and line breaks and other lines, this <br>word is in <span style='color:red;'>red </span>"))+
