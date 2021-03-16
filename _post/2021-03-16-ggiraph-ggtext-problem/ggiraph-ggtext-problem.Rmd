@@ -74,12 +74,12 @@ theme_post <- function() {
       plot.margin = margin(l = 0, 
                            t = 0.25,
                            unit = "cm"),
-      plot.title = element_text(
-        color = "grey20",
-        face = "bold",
-        margin = margin(l = 0, unit = "cm"),
-        size = 13
-      ),
+      # plot.title = element_text(
+      #   color = "grey20",
+      #   face = "bold",
+      #   margin = margin(l = 0, unit = "cm"),
+      #   size = 13
+      # ),
       plot.title.position = "plot",
       plot.subtitle = element_text(
         color = "grey50",
