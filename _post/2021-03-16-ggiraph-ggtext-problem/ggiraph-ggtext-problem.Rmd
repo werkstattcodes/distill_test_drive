@@ -20,7 +20,10 @@ knitr::opts_chunk$set(echo = T)
 library(tidyverse)
 library(ggtext)
 library(ggiraph)
+library(extrafont)
+extrafont::loadfonts(quiet=T)
 library(hrbrthemes)
+
 
 ```
 
