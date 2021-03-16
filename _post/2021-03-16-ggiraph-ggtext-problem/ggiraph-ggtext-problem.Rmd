@@ -30,7 +30,7 @@ library(hrbrthemes)
 
 pl_giraph_ggtext <- mtcars %>% 
   ggplot()+
-  labs(title=glue::glue("this is a very long title, with many lines and a line break etc etc etc, this <br>word is in <span style='color:red;'>red</span> or blue or white"))+
+  labs(title=glue::glue("this is a very long title, with many lines and a line <br>break etc etc etc, this <br>word is in <span style='color:red;'>red</span> or something else etc etc"))+
   geom_point_interactive(aes(x=wt,
                              y=qsec,
                              tooltip=paste(wt, qsec)))+
