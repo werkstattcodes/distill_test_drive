@@ -1,5 +1,5 @@
 ---
-title: "ggiraph ggtext problem"
+title: "font issue; mobile"
 description: |
   A short description of the post.
 author:
@@ -27,163 +27,13 @@ extrafont::loadfonts(quiet=T)
 library(hrbrthemes)
 
 
-```
-
-# only ggtext
-
-```{r}
-mtcars %>% 
-  ggplot()+
-  labs(title=glue::glue("this is a very long title, with many lines and line breaks and other lines, this <br>word is in <span style='color:red;'>red </span>"))+
-  geom_point(aes(x=wt,
-                 y=qsec))+
-  # theme_ipsum_rc()+
-  theme_ipsum_rc(base_family = "Roboto Condensed")+
-  theme(
-    plot.title=element_markdown()
-  )
-```
-
-
-# ggtext + ggiraph
-
-```{r}
-# extrafont::fonttable(
-#   
-# )
 
 pl_giraph_ggtext <- mtcars %>% 
   ggplot()+
-  labs(title=glue::glue("this is a very long title, with many lines and line breaks and other lines, this <br>word is in <span style='color:red;'>red </span>"))+
+  labs(title=glue::glue("this is a very long title, with many lines and a line break etc etc etc, this <br>word is in <span style='color:red;'>red</span> or blue or white"))+
   geom_point_interactive(aes(x=wt,
-                 y=qsec,
-                 tooltip=paste(wt, qsec)))+
-  theme_ipsum_rc(base_family = "RobotoCondensed")+
-  theme(
-    plot.title=element_markdown()
-  )
-
-girafe(ggobj = pl_giraph_ggtext,
-      fonts = list(sans = "RobotoCondensed"),
-       height_svg = 5,
-       options = list(
-    opts_toolbar(saveaspng = FALSE))
-  )
-
-
-```
-
-
-### ggtext + ggiraph + theme
-
-```{r}
-
-theme_post <- function() {
-  hrbrthemes::theme_ipsum_rc(base_family ="Roboto Condensed") +
-    theme(
-      plot.background = element_rect(fill = plot_bg_color, color=NA),
-      panel.background = element_rect(fill = plot_bg_color, color=NA),
-      #panel.border = element_rect(colour = plot_bg_color, fill=NA),
-      #plot.border = element_rect(colour = plot_bg_color, fill=NA),
-      plot.margin = margin(l = 0, 
-                           t = 0.25,
-                           unit = "cm"),
-      # plot.title = element_text(
-      #   color = "grey20",
-      #   face = "bold",
-      #   margin = margin(l = 0, unit = "cm"),
-      #   size = 13
-      # ),
-      # plot.title.position = "plot",
-      # plot.subtitle = element_text(
-      #   color = "grey50",
-      #   margin = margin(t = 0.2, b = 0.3, unit = "cm"),
-      #   size = 11
-      # ),
-      plot.caption = element_text(
-        color = "grey50",
-        size = 8,
-        hjust = c(0)
-      ),
-      # plot.caption.position = "panel",
-      axis.title.x = element_text(
-        angle = 0,
-        color = "grey50",
-        hjust = 1
-      ),
-      axis.text.x = element_text(
-        size = 9,
-        color = "grey50"
-      ),
-      axis.title.y = element_blank(),
-      axis.text.y = element_text(
-        size = 9,
-        color = "grey50"
-      ),
-      panel.grid.minor.x = element_blank(),
-      panel.grid.major.x = element_blank(),
-      panel.grid.minor.y = element_blank(),
-      panel.spacing = unit(0.25, "cm"),
-      panel.spacing.y = unit(0.25, "cm"),
-      strip.text = element_text(
-        angle = 0,
-        size = 9,
-        vjust = 1,
-        face = "bold"
-      ),
-      legend.title = element_text(
-        color = "grey30",
-        face = "bold",
-        vjust = 1,
-        size = 9
-      ),
-      legend.text = element_text(
-        size = 9,
-        color = "grey30"
-      ),
-      legend.justification = "left",
-      legend.box = "horizontal", # arrangement of multiple legends
-      legend.direction = "vertical",
-      legend.margin = margin(l = 0, t = 0, unit = "cm"),
-      legend.spacing.y = unit(0.07, units = "cm"),
-      legend.text.align = 0,
-      legend.box.just = "top",
-      legend.key.height = unit(0.2, "line"),
-      legend.key.width = unit(0.5, "line"),
-      text = element_text(size = 5)
-      # text=element_markdown(size=5)
-    )
-}
-
-pl_giraph_ggtext <- mtcars %>% 
-  ggplot()+
-  labs(title=glue::glue("this is a very long title, with many lines and line breaks and other lines, this <br>word is in <span style='color:red;'>red </span>"))+
-  geom_point_interactive(aes(x=wt,
-                 y=qsec,
-                 tooltip=paste(wt, qsec)))+
-  theme_post()+
-  theme(
-    plot.title=element_markdown()
-  )
-
-girafe(ggobj = pl_giraph_ggtext,
-       fonts=list(sans="Roboto Condensed"),
-       height_svg = 5,
-       options = list(
-    opts_toolbar(saveaspng = FALSE))
-  )
-
-```
-
-### ggiraph + hrbmrstr
-```{r}
-
-pl_giraph_ggtext <- mtcars %>% 
-  ggplot()+
-  labs(title=glue::glue("this is a very long title, with many lines and line breaks and other lines, this <br>word is in <span style='color:red;'>red</span> or blue or white"))+
-  geom_point_interactive(aes(x=wt,
-                 y=qsec,
-                 tooltip=paste(wt, qsec)))+
+                             y=qsec,
+                             tooltip=paste(wt, qsec)))+
   theme_ipsum_rc()+
   theme(plot.title=element_markdown())
 
@@ -191,8 +41,8 @@ girafe(ggobj = pl_giraph_ggtext,
        fonts=list(sans="Roboto Condensed"),
        height_svg = 5,
        options = list(
-    opts_toolbar(saveaspng = FALSE))
-  )
+         opts_toolbar(saveaspng = FALSE))
+)
 
 ```
 
