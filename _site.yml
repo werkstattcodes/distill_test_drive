@@ -1,0 +1,15 @@
+name: "distill_test_drive"
+title: "distill test drive"
+description: |
+  distill test drive
+output_dir: "_site"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+output: distill::distill_article
+
+collections:
+  post

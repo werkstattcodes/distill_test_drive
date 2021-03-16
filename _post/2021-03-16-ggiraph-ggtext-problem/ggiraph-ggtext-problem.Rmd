@@ -1,0 +1,60 @@
+---
+title: "ggiraph ggtext problem"
+description: |
+  A short description of the post.
+author:
+  - name: Unknown
+date: 03-16-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T)
+```
+
+
+```{r}
+library(tidyverse)
+library(ggtext)
+library(ggiraph)
+```
+
+# only ggtext
+
+```{r}
+mtcars %>% 
+  ggplot()+
+  labs(title=glue::glue("this is a very long title, with many lines and line breaks and other lines, this <br>word is in <span style='color:red;'>red </span>"))+
+  geom_point(aes(x=wt,
+                 y=qsec))+
+  theme(
+    plot.title=element_markdown()
+  )
+```
+
+
+# ggtext + ggiraph
+
+```{r}
+pl_giraph_ggtext <- mtcars %>% 
+  ggplot()+
+  labs(title=glue::glue("this is a very long title, with many lines and line breaks and other lines, this <br>word is in <span style='color:red;'>red </span>"))+
+  geom_point_interactive(aes(x=wt,
+                 y=qsec,
+                 tooltip=paste(wt, qsec)))+
+  theme(
+    plot.title=element_markdown()
+  )
+
+girafe(ggobj = pl_giraph_ggtext,
+       height_svg = 5,
+       options = list(
+    opts_toolbar(saveaspng = FALSE))
+  )
+
+
+```
+
