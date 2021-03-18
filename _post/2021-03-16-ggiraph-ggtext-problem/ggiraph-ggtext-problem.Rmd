@@ -51,7 +51,7 @@ girafe(ggobj = my_plot,
 
 ```
 
-# ggtext + ggiraph + theme_minimal
+# distorted: ggtext + ggiraph + theme_minimal
 
 ```{r}
 my_plot <- mtcars %>% 
@@ -61,6 +61,27 @@ my_plot <- mtcars %>%
                              y=qsec,
                              tooltip=paste(wt, qsec)))+
   theme_minimal()+
+  theme(plot.title=element_markdown())
+
+girafe(ggobj = my_plot,
+       fonts=list(sans="Roboto Condensed"),
+       height_svg = 5,
+       options = list(
+         opts_toolbar(saveaspng = FALSE))
+)
+
+```
+
+# ggtext + ggiraph + no theme
+
+```{r}
+my_plot <- mtcars %>% 
+  ggplot()+
+  labs(title=glue::glue("this is a very long title, with many lines and a line <br>break etc etc etc, this <br>word is in <span style='color:red;'>red</span> or something else etc etc"))+
+  geom_point_interactive(aes(x=wt,
+                             y=qsec,
+                             tooltip=paste(wt, qsec)))+
+  # theme_minimal()+
   theme(plot.title=element_markdown())
 
 girafe(ggobj = my_plot,
