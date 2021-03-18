@@ -8,6 +8,7 @@ date: 03-16-2021
 output:
   distill::distill_article:
     self_contained: false
+    toc: true
 ---
 
 
@@ -55,12 +56,12 @@ girafe(ggobj = pl_giraph_ggtext,
 ```{r}
 pl_giraph_ggtext <- mtcars %>% 
   ggplot()+
-  labs(title="this is a very long title, with many lines and a line <br>break etc etc etc, this word is in  somethingelse etc etc")+
+  labs(title="this is a very long title, with many lines and a line \nbreak etc etc etc, this word is in  somethingelse etc etc")+
   geom_point_interactive(aes(x=wt,
                              y=qsec,
                              tooltip=paste(wt, qsec)))+
-  theme_ipsum_rc()+
-  theme(plot.title=element_markdown())
+  theme_ipsum_rc()#+
+  #theme(plot.title=element_markdown())
 
 girafe(ggobj = pl_giraph_ggtext,
        fonts=list(sans="Roboto Condensed"),
@@ -68,5 +69,48 @@ girafe(ggobj = pl_giraph_ggtext,
        options = list(
          opts_toolbar(saveaspng = FALSE))
 )
+```
+
+# ggiraph alone
+
+```{r}
+pl_giraph_ggtext <- mtcars %>% 
+  ggplot()+
+  labs(title="this is a very long title, with many lines and a line \nbreak etc etc etc, this word is in  somethingelse etc etc")+
+  geom_point_interactive(aes(x=wt,
+                             y=qsec,
+                             tooltip=paste(wt, qsec)))+
+  theme_minimal()
+  # theme_ipsum_rc()+
+  # theme(plot.title=element_markdown())
+
+girafe(ggobj = pl_giraph_ggtext,
+       fonts=list(sans="Roboto Condensed"),
+       height_svg = 5,
+       options = list(
+         opts_toolbar(saveaspng = FALSE))
+)
+```
+
+# only hrbrthemes
+
+```{r}
+pl_giraph_ggtext <- mtcars %>% 
+  ggplot()+
+  labs(title="this is a very long title, with many lines and a line <br>break etc etc etc, this word is in  somethingelse etc etc")+
+  geom_point(aes(x=wt,
+                             y=qsec,
+                             tooltip=paste(wt, qsec)))+
+  theme_ipsum_rc()#+
+  # theme(plot.title=element_markdown())
+
+# girafe(ggobj = pl_giraph_ggtext,
+#        fonts=list(sans="Roboto Condensed"),
+#        height_svg = 5,
+#        options = list(
+#          opts_toolbar(saveaspng = FALSE))
+# )
+
+pl_giraph_ggtext
 ```
 
