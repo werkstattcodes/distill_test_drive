@@ -97,7 +97,7 @@ girafe(ggobj = pl_giraph_ggtext,
 ```{r}
 pl_giraph_ggtext <- mtcars %>% 
   ggplot()+
-  labs(title="this is a very long title, with many lines and a line <br>break etc etc etc, this word is in  somethingelse etc etc")+
+  labs(title="this is a very long title, with many lines and a line \nbreak etc etc etc, this word is in  somethingelse etc etc")+
   geom_point(aes(x=wt,
                              y=qsec,
                              tooltip=paste(wt, qsec)))+
