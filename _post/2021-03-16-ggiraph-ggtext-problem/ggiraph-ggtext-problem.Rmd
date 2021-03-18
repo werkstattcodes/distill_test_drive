@@ -27,7 +27,11 @@ extrafont::loadfonts(quiet=T)
 library(hrbrthemes)
 
 
+```
 
+# ggtex + ggiraph + hrbrthemes
+
+```{r}
 pl_giraph_ggtext <- mtcars %>% 
   ggplot()+
   labs(title=glue::glue("this is a very long title, with many lines and a line <br>break etc etc etc, this <br>word is in <span style='color:red;'>red</span> or something else etc etc"))+
@@ -44,5 +48,25 @@ girafe(ggobj = pl_giraph_ggtext,
          opts_toolbar(saveaspng = FALSE))
 )
 
+```
+
+# ggiraph + hrbrthemes
+
+```{r}
+pl_giraph_ggtext <- mtcars %>% 
+  ggplot()+
+  labs(title="this is a very long title, with many lines and a line <br>break etc etc etc, this word is in  somethingelse etc etc")+
+  geom_point_interactive(aes(x=wt,
+                             y=qsec,
+                             tooltip=paste(wt, qsec)))+
+  theme_ipsum_rc()+
+  theme(plot.title=element_markdown())
+
+girafe(ggobj = pl_giraph_ggtext,
+       fonts=list(sans="Roboto Condensed"),
+       height_svg = 5,
+       options = list(
+         opts_toolbar(saveaspng = FALSE))
+)
 ```
 
