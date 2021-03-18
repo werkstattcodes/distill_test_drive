@@ -103,7 +103,7 @@ my_plot <- mtcars %>%
                              y=qsec,
                              tooltip=paste(wt, qsec)))+
   # theme_minimal()+
-  theme(plot.title=element_markdown())
+  theme(plot.title=element_markdown(family="Roboto Condensed"))
 
 girafe(ggobj = my_plot,
       fonts=list(sans="Roboto Condensed"),
