@@ -6,14 +6,14 @@
       "description": "Some additional details about the blog",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-03-16T23:19:30+01:00"
+      "last_modified": "2021-03-27T11:16:56+01:00"
     },
     {
       "path": "index.html",
       "title": "distill test drive",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-03-16T23:19:31+01:00"
+      "last_modified": "2021-03-27T11:16:58+01:00"
     }
   ],
   "collections": ["post/post.json"]
