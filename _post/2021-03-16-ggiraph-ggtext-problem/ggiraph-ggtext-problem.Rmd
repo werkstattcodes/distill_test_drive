@@ -73,7 +73,7 @@ girafe(ggobj = my_plot2,
 
 ```
 
-# > ggtext + ggiraph  + NO font specified+  svglite
+# > distorted on mobile and desktop: ggtext + ggiraph  + NO font specified+ svglite
 
 ```{r, dev="svglite"}
 my_plot2 <- mtcars %>% 
@@ -92,6 +92,48 @@ girafe(ggobj = my_plot2,
 )
 
 ```
+
+# > ggtext + ggiraph  +Arial
+```{r}
+my_plot2 <- mtcars %>% 
+  ggplot()+
+  labs(title=glue::glue("this is a very long title, with many lines and a line <br>break etc etc etc, this <br>word is in <span style='color:red;'>red</span> or something else etc etc"))+
+  geom_point_interactive(aes(x=wt,
+                             y=qsec,
+                             tooltip=paste(wt, qsec)))+
+  # theme_minimal()+
+  theme(plot.title=element_markdown())
+
+girafe(ggobj = my_plot2,
+       fonts=list(sans="Arial"),
+       height_svg = 5,
+       options = list(
+         opts_toolbar(saveaspng = FALSE))
+)
+
+```
+
+# > ggiraph  + Roboto condensed (no ggtext)
+```{r}
+my_plot2 <- mtcars %>% 
+  ggplot()+
+  labs(title=glue::glue("this is a very long title, with many lines and a line <br>break etc etc etc, this word is in red or something else etc etc"))+
+  geom_point_interactive(aes(x=wt,
+                             y=qsec,
+                             tooltip=paste(wt, qsec)))+
+  # theme_minimal()+
+  theme(plot.title=element_text())
+
+girafe(ggobj = my_plot2,
+       fonts=list(sans="Roboto condensed"),
+       height_svg = 5,
+       options = list(
+         opts_toolbar(saveaspng = FALSE))
+)
+
+```
+
+
 
 
 ---------------------------------
