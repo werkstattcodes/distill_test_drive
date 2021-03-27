@@ -117,7 +117,7 @@ girafe(ggobj = my_plot2,
 ```{r}
 my_plot2 <- mtcars %>% 
   ggplot()+
-  labs(title=glue::glue("this is a very long title, with many lines and a line <br>break etc etc etc, this word is in red or something else etc etc"))+
+  labs(title=glue::glue("this is a very long title, with many lines and a line break etc etc etc, this word is in red or something else etc etc"))+
   geom_point_interactive(aes(x=wt,
                              y=qsec,
                              tooltip=paste(wt, qsec)))+
