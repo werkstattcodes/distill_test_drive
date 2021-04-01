@@ -6,10 +6,13 @@ output_dir: "_site"
 navbar:
   right:
     - text: "Home"
-      href: index.html
+      href: index.
     - text: "About"
-      href: about.html
-output: distill::distill_article
+      href: about.
 
 collections:
   post
+
+output:
+  distill::distill_article:
+    theme: theme.css
