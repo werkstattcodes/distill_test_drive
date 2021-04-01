@@ -76,7 +76,7 @@ girafe(ggobj = my_plot2,
 # > distorted on mobile and desktop: ggtext + ggiraph  + NO font specified+ svglite
 
 ```{r, dev="svglite"}
-my_plot2 <- mtcars %>% 
+my_plot3 <- mtcars %>% 
   ggplot()+
   labs(title=glue::glue("this is a very long title, with many lines and a line <br>break etc etc etc, this <br>word is in <span style='color:red;'>red</span> or something else etc etc"))+
   geom_point_interactive(aes(x=wt,
@@ -85,7 +85,7 @@ my_plot2 <- mtcars %>%
   # theme_minimal()+
   theme(plot.title=element_markdown())
 
-girafe(ggobj = my_plot2,
+girafe(ggobj = my_plot3,
        height_svg = 5,
        options = list(
          opts_toolbar(saveaspng = FALSE))
@@ -93,9 +93,9 @@ girafe(ggobj = my_plot2,
 
 ```
 
-# > ggtext + ggiraph  +Arial
+# > distorted mobile & desktop: ggtext + ggiraph  +Arial
 ```{r}
-my_plot2 <- mtcars %>% 
+my_plot4 <- mtcars %>% 
   ggplot()+
   labs(title=glue::glue("this is a very long title, with many lines and a line <br>break etc etc etc, this <br>word is in <span style='color:red;'>red</span> or something else etc etc"))+
   geom_point_interactive(aes(x=wt,
@@ -104,7 +104,7 @@ my_plot2 <- mtcars %>%
   # theme_minimal()+
   theme(plot.title=element_markdown())
 
-girafe(ggobj = my_plot2,
+girafe(ggobj = my_plot4,
        fonts=list(sans="Arial"),
        height_svg = 5,
        options = list(
@@ -113,9 +113,9 @@ girafe(ggobj = my_plot2,
 
 ```
 
-# > ggiraph  + Roboto condensed (no ggtext)
+# > not distorted: ggiraph  + Roboto condensed (no ggtext)
 ```{r}
-my_plot2 <- mtcars %>% 
+my_plot5 <- mtcars %>% 
   ggplot()+
   labs(title=glue::glue("this is a very long title, with many lines and a line break etc etc etc, this word is in red or something else etc etc"))+
   geom_point_interactive(aes(x=wt,
@@ -124,7 +124,7 @@ my_plot2 <- mtcars %>%
   # theme_minimal()+
   theme(plot.title=element_text())
 
-girafe(ggobj = my_plot2,
+girafe(ggobj = my_plot5,
        fonts=list(sans="Roboto condensed"),
        height_svg = 5,
        options = list(
@@ -133,135 +133,4 @@ girafe(ggobj = my_plot2,
 
 ```
 
-
-
-
----------------------------------
-# OTHER ATTEMPTS
-
-# error: ggtex + ggiraph + hrbrthemes
-
-```{r}
-my_plot <- mtcars %>% 
-  ggplot()+
-  labs(title=glue::glue("this is a very long title, with many lines and a line <br>break etc etc etc, this <br>word is in <span style='color:red;'>red</span> or something else etc etc"))+
-  geom_point_interactive(aes(x=wt,
-                             y=qsec,
-                             tooltip=paste(wt, qsec)))+
-  theme_ipsum_rc()+
-  theme(plot.title=element_markdown())
-
-girafe(ggobj = my_plot,
-       fonts=list(sans="Roboto Condensed"),
-       height_svg = 5,
-       options = list(
-         opts_toolbar(saveaspng = FALSE))
-)
-
-```
-
-# distorted: ggtext + ggiraph + theme_minimal
-
-```{r}
-my_plot <- mtcars %>% 
-  ggplot()+
-  labs(title=glue::glue("this is a very long title, with many lines and a line <br>break etc etc etc, this <br>word is in <span style='color:red;'>red</span> or something else etc etc"))+
-  geom_point_interactive(aes(x=wt,
-                             y=qsec,
-                             tooltip=paste(wt, qsec)))+
-  theme_minimal()+
-  theme(plot.title=element_markdown())
-
-girafe(ggobj = my_plot,
-       fonts=list(sans="Roboto Condensed"),
-       height_svg = 5,
-       options = list(
-         opts_toolbar(saveaspng = FALSE))
-)
-
-```
-
-# distorted: ggtext + ggiraph  NO font sepecified + no theme
-
-```{r}
-my_plot <- mtcars %>% 
-  ggplot()+
-  labs(title=glue::glue("this is a very long title, with many lines and a line <br>break etc etc etc, this <br>word is in <span style='color:red;'>red</span> or something else etc etc"))+
-  geom_point_interactive(aes(x=wt,
-                             y=qsec,
-                             tooltip=paste(wt, qsec)))+
-  # theme_minimal()+
-  theme(plot.title=element_markdown())
-
-girafe(ggobj = my_plot,
-     #  fonts=list(sans="Roboto Condensed"),
-       height_svg = 5,
-       options = list(
-         opts_toolbar(saveaspng = FALSE))
-)
-
-```
-
-
-# ggiraph + hrbrthemes
-
-```{r}
-my_plot <- mtcars %>% 
-  ggplot()+
-  labs(title="this is a very long title, with many lines and a line \nbreak etc etc etc, this word is in  somethingelse etc etc")+
-  geom_point_interactive(aes(x=wt,
-                             y=qsec,
-                             tooltip=paste(wt, qsec)))+
-  theme_ipsum_rc()#+
-  #theme(plot.title=element_markdown())
-
-girafe(ggobj = my_plot,
-       fonts=list(sans="Roboto Condensed"),
-       height_svg = 5,
-       options = list(
-         opts_toolbar(saveaspng = FALSE))
-)
-```
-
-# ggiraph alone
-
-```{r}
-my_plot <- mtcars %>% 
-  ggplot()+
-  labs(title="this is a very long title, with many lines and a line \nbreak etc etc etc, this word is in  somethingelse etc etc")+
-  geom_point_interactive(aes(x=wt,
-                             y=qsec,
-                             tooltip=paste(wt, qsec)))+
-  theme_minimal()
-  # theme_ipsum_rc()+
-  # theme(plot.title=element_markdown())
-
-girafe(ggobj = my_plot,
-       fonts=list(sans="Roboto Condensed"),
-       height_svg = 5,
-       options = list(
-         opts_toolbar(saveaspng = FALSE))
-)
-```
-
-# only hrbrthemes
-
-```{r}
-my_plot <- mtcars %>% 
-  ggplot()+
-  labs(title="this is a very long title, with many lines and a line \nbreak etc etc etc, this word is in  somethingelse etc etc")+
-  geom_point(aes(x=wt,
-                 y=qsec))+
-  theme_ipsum_rc()#+
-  # theme(plot.title=element_markdown())
-
-# girafe(ggobj = my_plot,
-#        fonts=list(sans="Roboto Condensed"),
-#        height_svg = 5,
-#        options = list(
-#          opts_toolbar(saveaspng = FALSE))
-# )
-
-my_plot
-```
 
