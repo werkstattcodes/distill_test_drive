@@ -1,0 +1,62 @@
+---
+title: "gt row padding"
+description: |
+  A short description of the post.
+author:
+  - name: Nora Jones
+    url:
+    # row padding  https://example.com/norajones
+date: 05px(-)05-2021
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T)
+library(tidyverse)
+library(gt)
+```
+
+```{r}
+mtcars <- mtcars %>% 
+  mutate(text="long text with line breaks\nlong text with linebreaks\nlong text with linebreaks")
+```
+
+
+# row padding .5
+
+```{r}
+mtcars %>% 
+  tibble::rownames_to_column(., var = "name") %>% 
+  select(name, text) %>% 
+  gt() %>% 
+  gt::tab_header(., title="row padding .5") %>% 
+  tab_options(
+    #table.font.size = "9px",
+    data_row.padding = px(.5) #decrease lineheight
+  )
+```
+
+
+
+# row padding 5
+
+```{r}
+mtcars %>% 
+  tibble::rownames_to_column(., var = "name") %>% 
+  select(name, text) %>% 
+  gt() %>% 
+  # row padding 
+  gt::tab_header(., title="row padding 5") %>% 
+  tab_options(
+    #table.font.size = "
+    # row padding 9px",
+    data_row.padding = px(5) #decrease lineheight
+  )
+```
+
+
