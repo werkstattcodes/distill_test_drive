@@ -1,5 +1,5 @@
 ---
-title: "gt row padding"
+title: "gt space between lines"
 description: |
   A short description of the post.
 author:
